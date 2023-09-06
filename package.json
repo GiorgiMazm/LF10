@@ -18,5 +18,9 @@
     "prettier": "^2.8.8",
     "vue-tsc": "^1.6.5",
     "@heroicons/vue": "^2.0.18"
+  },
+
+  "dependencies": {
+    "mongodb": "^5.6.0"
   }
 }
