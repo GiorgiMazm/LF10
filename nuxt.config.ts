@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   srcDir: "src",
+  serverDir: "server/",
   modules: ["@nuxtjs/tailwindcss"],
   //@ts-ignore
   buildModules: ["@nuxt/typescript-build"],

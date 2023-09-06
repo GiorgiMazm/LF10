@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   if (!dbConnection) {
     return;
   }
-  const forms = await dbConnection.collection("forms");
+  const forms = dbConnection.collection("forms");
   const body = await readBody(event);
   await forms.insertOne(body);
   return "success";
