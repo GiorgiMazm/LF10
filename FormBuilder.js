@@ -128,7 +128,8 @@ class FormDirector {
   }
 
   buildWohngeldantrag(nation, sex, socSUp, addPersLName, addPersFName, addPersBirth, hSize, hType, rent, wName, wStreet, wNumber, wPlz, wCity, nIncome, aName, aAddress, IBAN, BIC, bankName) {
-    this.builder.setNation(nation).setSex(sex).setSocialSupport(socSup).setAddPers(addPersLName, addPersFName, addPersBirth).setHouse(hSize, hType).setRent(rent).setWork(wName, wStreet, wNumber, wPlz, wCity).setIncome(nIncome).setBank(aName,aAddress, IBAN, BIC, bankName);
+    this.builder.setNation(nation).setSex(sex).setSocialSupport(socSup).setAddPers(addPersLName, addPersFName, addPersBirth).setHouse(hSize, hType).setRent(rent);
+    this.builder.setWork(wName, wStreet, wNumber, wPlz, wCity).setIncome(nIncome).setBank(aName,aAddress, IBAN, BIC, bankName);
   }
 }
 
