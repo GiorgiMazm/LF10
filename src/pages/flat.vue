@@ -1,13 +1,12 @@
-<script setup lang="ts">
-import useForm from "~/composables/useForm";
-
-const { addForm } = useForm();
-async function createForm() {
-  await addForm({ name: "Giorgi" });
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div>Flat formular</div>
-  <button @click="createForm">CLICK ME!!!</button>
+  <div>
+    <section>
+      <div class="container mx-auto">
+        <h1 class="text-center text-5xl mt-8">Wohngeldantrag Formular</h1>
+        <AppForm title="Wohngeldantrag" />
+      </div>
+    </section>
+  </div>
 </template>
