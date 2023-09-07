@@ -123,19 +123,100 @@ class FormBuilder {
 // Director aufgerufen, der die Blaupause für das Formular ausführt
 
 class FormDirector {
-  constructor(lName, fName, birthday, adStreet, adNumber, adPlz, adCity, eMailAdd, telNum){
-    this.builder = new FormBuilder(lName, fName, birthday, adStreet, adNumber, adPlz, adCity, eMailAdd, telNum);
+  constructor(
+    lName,
+    fName,
+    birthday,
+    adStreet,
+    adNumber,
+    adPlz,
+    adCity,
+    eMailAdd,
+    telNum
+  ) {
+    this.builder = new FormBuilder(
+      lName,
+      fName,
+      birthday,
+      adStreet,
+      adNumber,
+      adPlz,
+      adCity,
+      eMailAdd,
+      telNum
+    );
   }
 
-  buildWohngeldantrag(nation, sex, socSUp, addPersLName, addPersFName, addPersBirth, hSize, hType, rent, wName, wStreet, wNumber, wPlz, wCity, nIncome, aName, aAddress, IBAN, BIC, bankName) {
-    this.builder.setNation(nation).setSex(sex).setSocialSupport(socSup).setAddPers(addPersLName, addPersFName, addPersBirth).setHouse(hSize, hType).setRent(rent);
-    this.builder.setWork(wName, wStreet, wNumber, wPlz, wCity).setIncome(nIncome).setBank(aName,aAddress, IBAN, BIC, bankName);
+  buildWohngeldantrag(
+    nation,
+    sex,
+    socSup,
+    addPersLName,
+    addPersFName,
+    addPersBirth,
+    hSize,
+    hType,
+    rent,
+    wName,
+    wStreet,
+    wNumber,
+    wPlz,
+    wCity,
+    nIncome,
+    aName,
+    aAddress,
+    IBAN,
+    BIC,
+    bankName
+  ) {
+    this.builder
+      .setNation(nation)
+      .setSex(sex)
+      .setSocialSupport(socSup)
+      .setAddPers(addPersLName, addPersFName, addPersBirth)
+      .setHouse(hSize, hType)
+      .setRent(rent);
+    this.builder
+      .setWork(wName, wStreet, wNumber, wPlz, wCity)
+      .setIncome(nIncome)
+      .setBank(aName, aAddress, IBAN, BIC, bankName);
   }
 }
 
 //TEST///////////////////////
-const director = new FormDirector("Cramer", "Mathis", "16.11.1995", "Emil-Janßen-Straße", "36", "22307", "Hamburg", "mathis.cramer@icloud.com", "123456789")
-director.buildWohngeldantrag("deutsch", "m", "no", "Büngener", "Aiyana", "05.04.1999", 50, "flat", 840, "Jungheinrich", "Friedrich-Ebert-Damm", "129", "22870", "Hamburg", 1200, "Mathis Cramer", "Emil-Janßen-Straße", "DE151466538546", "NOLDADE175815", "Sparkasse")
-form = director.builder.buildForm
+const director = new FormDirector(
+  "Cramer",
+  "Mathis",
+  "16.11.1995",
+  "Emil-Janßen-Straße",
+  "36",
+  "22307",
+  "Hamburg",
+  "mathis.cramer@icloud.com",
+  "123456789"
+);
+director.buildWohngeldantrag(
+  "deutsch",
+  "m",
+  "no",
+  "Büngener",
+  "Aiyana",
+  "05.04.1999",
+  50,
+  "flat",
+  840,
+  "Jungheinrich",
+  "Friedrich-Ebert-Damm",
+  "129",
+  "22870",
+  "Hamburg",
+  1200,
+  "Mathis Cramer",
+  "Emil-Janßen-Straße",
+  "DE151466538546",
+  "NOLDADE175815",
+  "Sparkasse"
+);
+const form = director.builder.buildForm();
 
-console.log(form)
+console.log(form);
