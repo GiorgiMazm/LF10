@@ -102,6 +102,56 @@ export default class FormBuilder {
     return this;
   }
 
+  setProfession(
+    prevProfession: boolean | undefined,
+  ) {
+    this.form.prevProfession = prevProfession;
+    return this;
+  }
+
+  setEducation(
+    eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
+    eduStart: Date | undefined,
+    eduEnd: Date | undefined,
+    eduProfession: string | undefined
+  ) {
+    this.form.eduType = eduType;
+    this.form.eduStart = eduStart;
+    this.form.eduEnd = eduEnd;
+    this.form.eduProfession = eduProfession;
+    return this;
+  }
+
+  setJobEducation(
+   jobTitle: string | undefined,
+   jobBegin: Date | undefined,
+   jobEnd: Date | undefined,
+   jobEduInstitution: string | undefined
+  ) {
+    this.form.jobTitle = jobTitle;
+    this.form.jobBegin = jobBegin;
+    this.form.jobEnd = jobEnd;
+    this.form.jobEduInstitution = jobEduInstitution;
+    return this;
+  }
+
+  setTravelCosts(
+    pendel: boolean | undefined,
+    daysAWeek: number | undefined,
+    transport: "Public Transport" | "KFZ" | "other" | undefined,
+    start: string | undefined,
+    end: string | undefined,
+    transportCostMonth: number | undefined
+  ) {
+    this.form.pendel = pendel;
+    this.form.daysAWeek = daysAWeek;
+    this.form.transport = transport;
+    this.form.start = start;
+    this.form.end = end;
+    this.form.transportCostMonth = transportCostMonth;
+    return this;
+  }  
+
   buildForm() {
     return this.form;
   }

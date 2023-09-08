@@ -126,7 +126,22 @@ export default class FormDirector {
     bankAddress: string | undefined,
     IBAN: string | undefined,
     BIC: string | undefined,
-    bankName: string | undefined
+    bankName: string | undefined,
+    prevProfession: boolean | undefined,
+    eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
+    eduStart: Date | undefined,
+    eduEnd: Date | undefined,
+    eduProfession: string | undefined,
+    jobTitle: string | undefined,
+    jobBegin: Date | undefined,
+    jobEnd: Date | undefined,
+    jobEduInstitution: string | undefined,
+    pendel: boolean | undefined,
+    daysAWeek: number | undefined,
+    transport: "Public Transport" | "KFZ" | "other" | undefined,
+    start: string | undefined,
+    end: string | undefined,
+    transportCostMonth: number | undefined
   ) {
     this._builder
       .setNation(nation)
@@ -139,5 +154,49 @@ export default class FormDirector {
       .setWork(workName, workStreet, workNumber, workPlz, workCity)
       .setIncome(nettoIncome)
       .setBank(bankUserName, bankAddress, IBAN, BIC, bankName);
+    this.buildBABAntrag(
+      nation, 
+      prevProfession, 
+      eduType, 
+      eduStart, 
+      eduEnd, 
+      eduProfession, 
+      jobTitle, 
+      jobBegin, 
+      jobEnd, 
+      jobEduInstitution, 
+      pendel, 
+      daysAWeek, 
+      transport, 
+      start, 
+      end, 
+      transportCostMonth
+      )
+  }
+
+  buildBABAntrag(
+    nation: string | undefined,
+    prevProfession: boolean | undefined,
+    eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
+    eduStart: Date | undefined,
+    eduEnd: Date | undefined,
+    eduProfession: string | undefined,
+    jobTitle: string | undefined,
+    jobBegin: Date | undefined,
+    jobEnd: Date | undefined,
+    jobEduInstitution: string | undefined,
+    pendel: boolean | undefined,
+    daysAWeek: number | undefined,
+    transport: "Public Transport" | "KFZ" | "other" | undefined,
+    start: string | undefined,
+    end: string | undefined,
+    transportCostMonth: number | undefined
+  ) {
+    this._builder
+    .setNation(nation)
+    .setProfession(prevProfession)
+    .setEducation(eduType, eduStart, eduEnd, eduProfession)
+    .setJobEducation(jobTitle, jobBegin, jobEnd, jobEduInstitution)
+    .setTravelCosts(pendel, daysAWeek, transport, start, end, transportCostMonth);
   }
 }
