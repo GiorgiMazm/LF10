@@ -1,4 +1,42 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import FormDirector from "~/types/FormDirector";
+
+const director = new FormDirector(
+  "Cramer",
+  "Mathis",
+  "16.11.1995",
+  "Emil-Janßen-Straße",
+  "36",
+  22307,
+  "Hamburg",
+  "mathis.cramer@icloud.com",
+  "123456789"
+);
+director.buildWohngeldantrag(
+  "deutsch",
+  "Male",
+  false,
+  "Büngener",
+  "Aiyana",
+  "05.04.1999",
+  50,
+  "flat",
+  840,
+  "Jungheinrich",
+  "Friedrich-Ebert-Damm",
+  "129",
+  22870,
+  "Hamburg",
+  1200,
+  "Mathis Cramer",
+  "Emil-Janßen-Straße",
+  "DE151466538546",
+  "NOLDADE175815",
+  "Sparkasse"
+);
+const form = director.builder.buildForm();
+console.log(form);
+</script>
 
 <template>
   <div>
