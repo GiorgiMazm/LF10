@@ -2,7 +2,6 @@
 const { addForm } = useForm();
 async function createForm() {
   await addForm(dataObject.value);
-  console.log(dataObject.value);
 }
 
 const formFields = ["First", "Lastname", "Age", "Nationality", "sex"];
