@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import FormDirector from "~/types/FormDirector";
+import Form from "~/types/Form";
 const { addForm } = useForm();
-async function createForm() {
-  await addForm(dataObject.value);
-  console.log(dataObject.value);
-}
 
-const formFields = ["First", "Lastname", "Age", "Nationality", "sex"];
+const director = new FormDirector("", "", "", "", "", 0, "", "", "");
+const form = director.builder.buildForm();
+async function createForm() {
+  //@ts-ignore
+  dataObject.value.isApproved = null;
+  await addForm(dataObject.value);
+}
 
 function createObject(data: object) {
   //@ts-ignore
@@ -19,10 +23,10 @@ const dataObject = ref({});
   <div>
     <form>
       <text-input
-        v-for="filed in formFields"
-        :label="filed"
-        :placeholder="filed"
-        :field-name="filed"
+        v-for="(value, key) in form"
+        :label="key.slice(1)"
+        :placeholder="key.slice(1)"
+        :field-name="key"
         @passInputValue="createObject"
       />
       <button class="my-2" @click.prevent="createForm">Submit</button>

@@ -32,7 +32,22 @@ director.buildWohngeldantrag(
   "Emil-Janßen-Straße",
   "DE151466538546",
   "NOLDADE175815",
-  "Sparkasse"
+  "Sparkasse",
+  true,
+  "middle school",
+  new Date(),
+  new Date(),
+  "Plumber",
+  "The Plumber",
+  new Date(),
+  new Date(),
+  "Harward",
+  false,
+  4,
+  "KFZ",
+  "start!",
+  "end!!",
+  50
 );
 const form = director.builder.buildForm();
 console.log(form);

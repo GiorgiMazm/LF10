@@ -1,6 +1,186 @@
 import Person from "~/types/Person";
 
 export default class Form {
+  private _prevProfession: boolean | undefined;
+  private _eduType:
+    | "middle school"
+    | "high school"
+    | "university"
+    | "apprenticeship"
+    | undefined;
+  private _eduStart: Date | undefined;
+  private _eduEnd: Date | undefined;
+  private _eduProfession: string | undefined;
+  private _jobTitle: string | undefined;
+  private _jobBegin: Date | undefined;
+  private _jobEnd: Date | undefined;
+  private _jobEduInstitution: string | undefined;
+  private _pendel: boolean | undefined;
+  private _daysAWeek: number | undefined;
+  private _transport: "Public Transport" | "KFZ" | "other" | undefined;
+  private _start: string | undefined;
+  private _end: string | undefined;
+  private _transportCostMonth: number | undefined;
+  private _nationality: string | undefined;
+  private _socSup: boolean | undefined;
+  private _workName: string | undefined;
+  private _workStreet: string | undefined;
+  private _workNumber: string | undefined;
+  private _workPlz: number | undefined;
+  private _workCity: string | undefined;
+  private _occupation: string | undefined;
+  private _income: number | undefined;
+  private _addedPerson: Person | undefined;
+  private _houseSize: number | undefined;
+  private _houseType: string | undefined;
+  private _rent: number | undefined;
+  private _bankUserName: string | undefined;
+  private _bankAddress: string | undefined;
+  private _bankIBAN: string | undefined;
+  private _bankBIC: string | undefined;
+  private _sex: "Male" | "Female" | "Diverse" | undefined;
+  private _bankName: string | undefined;
+
+  get bankName(): string | undefined {
+    return this._bankName;
+  }
+
+  set bankName(value: string | undefined) {
+    this._bankName = value;
+  }
+
+  get prevProfession(): boolean | undefined {
+    return this._prevProfession;
+  }
+
+  set prevProfession(value: boolean | undefined) {
+    this._prevProfession = value;
+  }
+
+  get eduType():
+    | "middle school"
+    | "high school"
+    | "university"
+    | "apprenticeship"
+    | undefined {
+    return this._eduType;
+  }
+
+  set eduType(
+    value:
+      | "middle school"
+      | "high school"
+      | "university"
+      | "apprenticeship"
+      | undefined
+  ) {
+    this._eduType = value;
+  }
+
+  get eduStart(): Date | undefined {
+    return this._eduStart;
+  }
+
+  set eduStart(value: Date | undefined) {
+    this._eduStart = value;
+  }
+
+  get eduEnd(): Date | undefined {
+    return this._eduEnd;
+  }
+
+  set eduEnd(value: Date | undefined) {
+    this._eduEnd = value;
+  }
+
+  get eduProfession(): string | undefined {
+    return this._eduProfession;
+  }
+
+  set eduProfession(value: string | undefined) {
+    this._eduProfession = value;
+  }
+
+  get jobTitle(): string | undefined {
+    return this._jobTitle;
+  }
+
+  set jobTitle(value: string | undefined) {
+    this._jobTitle = value;
+  }
+
+  get jobBegin(): Date | undefined {
+    return this._jobBegin;
+  }
+
+  set jobBegin(value: Date | undefined) {
+    this._jobBegin = value;
+  }
+
+  get jobEnd(): Date | undefined {
+    return this._jobEnd;
+  }
+
+  set jobEnd(value: Date | undefined) {
+    this._jobEnd = value;
+  }
+
+  get jobEduInstitution(): string | undefined {
+    return this._jobEduInstitution;
+  }
+
+  set jobEduInstitution(value: string | undefined) {
+    this._jobEduInstitution = value;
+  }
+
+  get pendel(): boolean | undefined {
+    return this._pendel;
+  }
+
+  set pendel(value: boolean | undefined) {
+    this._pendel = value;
+  }
+
+  get daysAWeek(): number | undefined {
+    return this._daysAWeek;
+  }
+
+  set daysAWeek(value: number | undefined) {
+    this._daysAWeek = value;
+  }
+
+  get transport(): "Public Transport" | "KFZ" | "other" | undefined {
+    return this._transport;
+  }
+
+  set transport(value: "Public Transport" | "KFZ" | "other" | undefined) {
+    this._transport = value;
+  }
+
+  get start(): string | undefined {
+    return this._start;
+  }
+
+  set start(value: string | undefined) {
+    this._start = value;
+  }
+
+  get end(): string | undefined {
+    return this._end;
+  }
+
+  set end(value: string | undefined) {
+    this._end = value;
+  }
+
+  get transportCostMonth(): number | undefined {
+    return this._transportCostMonth;
+  }
+
+  set transportCostMonth(value: number | undefined) {
+    this._transportCostMonth = value;
+  }
+
   get applicant(): Person {
     return this._applicant;
   }
@@ -217,25 +397,6 @@ export default class Form {
   set nationality(value: string | undefined) {
     this._nationality = value;
   }
-
-  private _nationality: string | undefined;
-  private _socSup: boolean | undefined;
-  private _workName: string | undefined;
-  private _workStreet: string | undefined;
-  private _workNumber: string | undefined;
-  private _workPlz: number | undefined;
-  private _workCity: string | undefined;
-  private _occupation: string | undefined;
-  private _income: number | undefined;
-  private _addedPerson: Person | undefined;
-  private _houseSize: number | undefined;
-  private _houseType: string | undefined;
-  private _rent: number | undefined;
-  private _bankUserName: string | undefined;
-  private _bankAddress: string | undefined;
-  private _bankIBAN: string | undefined;
-  private _bankBIC: string | undefined;
-
   get socSup(): boolean | undefined {
     return this._socSup;
   }
@@ -244,7 +405,6 @@ export default class Form {
     this._socSup = value;
   }
 
-  private _sex: "Male" | "Female" | "Diverse" | undefined;
   constructor(
     private _lastName: string,
     private _firstName: string,
