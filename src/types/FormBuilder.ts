@@ -150,7 +150,48 @@ export default class FormBuilder {
     this.form.end = end;
     this.form.transportCostMonth = transportCostMonth;
     return this;
-  }  
+  }
+  
+  setSocialSecurity(
+    healthSecurity: "lawFamily" | "lawStudent" | "private" | "lawVolunteer" | "other" | undefined,
+    careSecurity: boolean | undefined
+  ) {
+    this.form.healthSecurity = healthSecurity;
+    this.form.careSecurity = careSecurity;
+    return this;
+  }
+
+  setTax(
+    taxNumber: string | undefined
+  ) {
+    this.form.taxNumber = taxNumber;
+    return this;
+  }
+
+  setParents(
+    firstPLastName: string | undefined,
+    firstPFirstName: string | undefined,
+    firstPBirth: string | undefined,
+    firstPSex: "Male" | "Female" | "Diverse" | undefined,
+    firstPNation: string | undefined,
+    firstPAddress: string | undefined,
+    secondPLastName: string | undefined,
+    secondPFirstName: string | undefined,
+    secondPBirth: string | undefined,
+    secondPSex: "Male" | "Female" | "Diverse" | undefined,
+    secondPNation: string | undefined,
+    secondPAddress: string | undefined,
+  ) {
+    this.form.firstParent = new Person(firstPLastName, firstPFirstName, firstPBirth);
+    this.form.firstSex = firstPSex;
+    this.form.firstNation = firstPNation;
+    this.form.firstPAddress = firstPAddress;
+    this.form.secondParent = new Person(secondPLastName, secondPFirstName, secondPBirth);
+    this.form.secondPSex = secondPSex;
+    this.form.secondPNation = secondPNation;
+    this.form.secondPAddress = secondPAddress;
+    return this;
+  }
 
   buildForm() {
     return this.form;

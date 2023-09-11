@@ -1,5 +1,82 @@
 import FormBuilder from "~/types/FormBuilder";
 
+interface wohngeld_interface{
+  nation: string | undefined,
+  sex: "Male" | "Female" | "Diverse" | undefined,
+  socSup: boolean | undefined,
+  addPersonLastName: string | undefined,
+  addPersonFirstName: string | undefined,
+  addPersonBirthday: string | undefined,
+  houseSize: number | undefined,
+  houseType: string | undefined,
+  rent: number | undefined,
+  workName: string | undefined,
+  workStreet: string | undefined,
+  workNumber: string | undefined,
+  workPlz: number | undefined,
+  workCity: string | undefined,
+  nettoIncome: number | undefined,
+  bankUserName: string | undefined,
+  bankAddress: string | undefined,
+  IBAN: string | undefined,
+  BIC: string | undefined,
+  bankName: string | undefined,
+  bab: BAB_interface
+}
+
+interface BAB_interface{
+  nation: string | undefined,
+  prevProfession: boolean | undefined,
+  eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
+  eduStart: Date | undefined,
+  eduEnd: Date | undefined,
+  eduProfession: string | undefined,
+  jobTitle: string | undefined,
+  jobBegin: Date | undefined,
+  jobEnd: Date | undefined,
+  jobEduInstitution: string | undefined,
+  pendel: boolean | undefined,
+  daysAWeek: number | undefined,
+  transport: "Public Transport" | "KFZ" | "other" | undefined,
+  start: string | undefined,
+  end: string | undefined,
+  transportCostMonth: number | undefined,
+  bafog: bafog_interface
+}
+
+interface bafog_interface{
+  healthSecurity: "lawFamily" | "lawStudent" | "private" | "lawVolunteer" | "other" | undefined,
+  careSecurity: boolean | undefined,
+  taxNumber: string | undefined,
+  eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
+  eduStart: Date | undefined,
+  eduEnd: Date | undefined,
+  eduProfession: string | undefined,
+  nation: string | undefined,
+  bankUserName: string | undefined,
+  bankAddress: string | undefined,
+  IBAN: string | undefined,
+  BIC: string | undefined,
+  bankName: string | undefined,
+  firstPLastName: string | undefined,
+  firstPFirstName: string | undefined,
+  firstPBirth: string | undefined,
+  firstPSex: "Male" | "Female" | "Diverse" | undefined,
+  firstPNation: string | undefined,
+  firstPAddress: string | undefined,
+  secondPLastName: string | undefined,
+  secondPFirstName: string | undefined,
+  secondPBirth: string | undefined,
+  secondPSex: "Male" | "Female" | "Diverse" | undefined,
+  secondPNation: string | undefined,
+  secondPAddress: string | undefined,
+  nettoIncome: number | undefined,
+  jobTitle: string | undefined,
+  jobBegin: Date | undefined,
+  jobEnd: Date | undefined,
+  jobEduInstitution: string | undefined
+}
+
 export default class FormDirector {
   private _builder: FormBuilder;
   get builder(): FormBuilder {
@@ -107,96 +184,92 @@ export default class FormDirector {
   }
 
   buildWohngeldantrag(
-    nation: string | undefined,
-    sex: "Male" | "Female" | "Diverse" | undefined,
-    socSup: boolean | undefined,
-    addPersonLastName: string | undefined,
-    addPersonFirstName: string | undefined,
-    addPersonBirthday: string | undefined,
-    houseSize: number | undefined,
-    houseType: string | undefined,
-    rent: number | undefined,
-    workName: string | undefined,
-    workStreet: string | undefined,
-    workNumber: string | undefined,
-    workPlz: number | undefined,
-    workCity: string | undefined,
-    nettoIncome: number | undefined,
-    bankUserName: string | undefined,
-    bankAddress: string | undefined,
-    IBAN: string | undefined,
-    BIC: string | undefined,
-    bankName: string | undefined,
-    prevProfession: boolean | undefined,
-    eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
-    eduStart: Date | undefined,
-    eduEnd: Date | undefined,
-    eduProfession: string | undefined,
-    jobTitle: string | undefined,
-    jobBegin: Date | undefined,
-    jobEnd: Date | undefined,
-    jobEduInstitution: string | undefined,
-    pendel: boolean | undefined,
-    daysAWeek: number | undefined,
-    transport: "Public Transport" | "KFZ" | "other" | undefined,
-    start: string | undefined,
-    end: string | undefined,
-    transportCostMonth: number | undefined
+    wohngeldParams: wohngeld_interface,
   ) {
     this._builder
-      .setNation(nation)
-      .setSex(sex)
-      .setSocialSupport(socSup)
-      .setAddPers(addPersonLastName, addPersonFirstName, addPersonBirthday)
-      .setHouse(houseSize, houseType)
-      .setRent(rent);
+      .setNation(wohngeldParams.nation)
+      .setSex(wohngeldParams.sex)
+      .setSocialSupport(wohngeldParams.socSup)
+      .setAddPers(wohngeldParams.addPersonLastName, 
+        wohngeldParams.addPersonFirstName, 
+        wohngeldParams.addPersonBirthday)
+      .setHouse(wohngeldParams.houseSize, 
+        wohngeldParams.houseType)
+      .setRent(wohngeldParams.rent);
     this._builder
-      .setWork(workName, workStreet, workNumber, workPlz, workCity)
-      .setIncome(nettoIncome)
-      .setBank(bankUserName, bankAddress, IBAN, BIC, bankName);
+      .setWork(wohngeldParams.workName, 
+        wohngeldParams.workStreet, 
+        wohngeldParams.workNumber, 
+        wohngeldParams.workPlz, 
+        wohngeldParams.workCity)
+      .setIncome(wohngeldParams.nettoIncome)
+      .setBank(
+        wohngeldParams.bankUserName, 
+        wohngeldParams.bankAddress, 
+        wohngeldParams.IBAN, 
+        wohngeldParams.BIC, 
+        wohngeldParams.bankName);
     this.buildBABAntrag(
-      nation, 
-      prevProfession, 
-      eduType, 
-      eduStart, 
-      eduEnd, 
-      eduProfession, 
-      jobTitle, 
-      jobBegin, 
-      jobEnd, 
-      jobEduInstitution, 
-      pendel, 
-      daysAWeek, 
-      transport, 
-      start, 
-      end, 
-      transportCostMonth
+      wohngeldParams.bab
       )
   }
 
   buildBABAntrag(
-    nation: string | undefined,
-    prevProfession: boolean | undefined,
-    eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
-    eduStart: Date | undefined,
-    eduEnd: Date | undefined,
-    eduProfession: string | undefined,
-    jobTitle: string | undefined,
-    jobBegin: Date | undefined,
-    jobEnd: Date | undefined,
-    jobEduInstitution: string | undefined,
-    pendel: boolean | undefined,
-    daysAWeek: number | undefined,
-    transport: "Public Transport" | "KFZ" | "other" | undefined,
-    start: string | undefined,
-    end: string | undefined,
-    transportCostMonth: number | undefined
+    babParams: BAB_interface
   ) {
     this._builder
-    .setNation(nation)
-    .setProfession(prevProfession)
-    .setEducation(eduType, eduStart, eduEnd, eduProfession)
-    .setJobEducation(jobTitle, jobBegin, jobEnd, jobEduInstitution)
-    .setTravelCosts(pendel, daysAWeek, transport, start, end, transportCostMonth);
+    .setNation(babParams.nation)
+    .setProfession(babParams.prevProfession)
+    .setEducation(babParams.eduType, 
+      babParams.eduStart, 
+      babParams.eduEnd, 
+      babParams.eduProfession)
+    .setJobEducation(babParams.jobTitle, 
+      babParams.jobBegin, 
+      babParams.jobEnd, 
+      babParams.jobEduInstitution)
+    .setTravelCosts(babParams.pendel, 
+      babParams.daysAWeek, 
+      babParams.transport, 
+      babParams.start, 
+      babParams.end, 
+      babParams.transportCostMonth);
+    this.buildBafog(
+      babParams.bafog)
+  }
+
+  buildBafog(
+    bafogParams: bafog_interface
+  ) {
+    this._builder
+    .setJobEducation(bafogParams.jobTitle, 
+      bafogParams.jobBegin, 
+      bafogParams.jobEnd, 
+      bafogParams.jobEduInstitution)
+    .setNation(bafogParams.nation)
+    .setBank(bafogParams.bankUserName, 
+      bafogParams.bankAddress, 
+      bafogParams.IBAN, 
+      bafogParams.BIC, 
+      bafogParams.bankName)
+    .setSocialSecurity(bafogParams.healthSecurity, 
+      bafogParams.careSecurity)
+    .setTax(bafogParams.taxNumber)
+    .setParents(bafogParams.firstPLastName, 
+      bafogParams.firstPFirstName, bafogParams.firstPBirth, 
+      bafogParams.firstPSex, 
+      bafogParams.firstPNation, 
+      bafogParams.firstPAddress, 
+      bafogParams.secondPLastName, 
+      bafogParams.secondPFirstName, 
+      bafogParams.secondPBirth, 
+      bafogParams.secondPSex, 
+      bafogParams.secondPNation, 
+      bafogParams.secondPAddress)
+    .setIncome(bafogParams.nettoIncome)
+    .setEducation(bafogParams.eduType, 
+      bafogParams.eduStart, 
+      bafogParams.eduEnd, 
+      bafogParams.eduProfession)
   }
 }
