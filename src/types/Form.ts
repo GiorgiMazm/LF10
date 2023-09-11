@@ -39,6 +39,15 @@ export default class Form {
   private _bankIBAN: string | undefined;
   private _bankBIC: string | undefined;
   private _sex: "Male" | "Female" | "Diverse" | undefined;
+  private _bankName: string | undefined;
+
+  get bankName(): string | undefined {
+    return this._bankName;
+  }
+
+  set bankName(value: string | undefined) {
+    this._bankName = value;
+  }
 
   get prevProfession(): boolean | undefined {
     return this._prevProfession;

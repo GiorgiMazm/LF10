@@ -1,6 +1,5 @@
 import Form from "~/types/Form";
 import Person from "~/types/Person";
-import FormDirector from "~/types/FormDirector";
 
 export default class FormBuilder {
   private form: Form;
@@ -99,18 +98,22 @@ export default class FormBuilder {
     this.form.bankAddress = address;
     this.form.bankIBAN = IBAN;
     this.form.bankBIC = BIC;
+    this.form.bankName = bankName;
     return this;
   }
 
-  setProfession(
-    prevProfession: boolean | undefined,
-  ) {
+  setProfession(prevProfession: boolean | undefined) {
     this.form.prevProfession = prevProfession;
     return this;
   }
 
   setEducation(
-    eduType: "middle school" | "high school" | "university" | "apprenticeship" | undefined,
+    eduType:
+      | "middle school"
+      | "high school"
+      | "university"
+      | "apprenticeship"
+      | undefined,
     eduStart: Date | undefined,
     eduEnd: Date | undefined,
     eduProfession: string | undefined
@@ -123,10 +126,10 @@ export default class FormBuilder {
   }
 
   setJobEducation(
-   jobTitle: string | undefined,
-   jobBegin: Date | undefined,
-   jobEnd: Date | undefined,
-   jobEduInstitution: string | undefined
+    jobTitle: string | undefined,
+    jobBegin: Date | undefined,
+    jobEnd: Date | undefined,
+    jobEduInstitution: string | undefined
   ) {
     this.form.jobTitle = jobTitle;
     this.form.jobBegin = jobBegin;
@@ -150,7 +153,7 @@ export default class FormBuilder {
     this.form.end = end;
     this.form.transportCostMonth = transportCostMonth;
     return this;
-  }  
+  }
 
   buildForm() {
     return this.form;
