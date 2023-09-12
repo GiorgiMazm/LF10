@@ -11,7 +11,7 @@ console.log(obj);
     <section>
       <div class="container mx-auto">
         <div class="text-center pt-20">
-          <h1 class="text-5xl">Welcome to our page, {{ $t("name") }}!</h1>
+          <h1 class="text-5xl">Welcome to our page!</h1>
           <h2 class="text-3xl pt-12 pb-4">Select your form</h2>
           <ul class="flex flex-col items-center">
             <li

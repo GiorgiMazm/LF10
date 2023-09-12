@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { ObjectId } from "mongodb";
-
 const { getForm, putForm } = useForm();
-const formArray: { _id: ObjectId }[] = await getForm();
-const update = (_id: ObjectId) => {
+const formArray: { _id: string }[] = await getForm();
+const update = (_id: string) => {
   putForm(_id);
 };
 </script>

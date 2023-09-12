@@ -1,11 +1,15 @@
 import connectDb from "../plugins/connectDb";
+import { ObjectId } from "bson";
 
 export default defineEventHandler(async (event) => {
   const dbConnection = await connectDb();
 
   if (!dbConnection) return;
   const forms = dbConnection.collection("forms");
-  const id = await readBody(event);
-  await forms.updateOne({ _id: id }, { $set: { isApproved: true } });
+  const body = await readBody(event);
+  await forms.updateOne(
+    { _id: new ObjectId(body.id) },
+    { $set: { isApproved: true } }
+  );
   return "success";
 });

@@ -1,5 +1,3 @@
-import { ObjectId } from "mongodb";
-
 export default () => {
   async function addForm(form: Object) {
     const { error } = await useFetch("api/form", {
@@ -17,13 +15,13 @@ export default () => {
       });
     }
   }
-  async function putForm(_id: ObjectId) {
+  async function putForm(id: string) {
     const { error } = await useFetch("api/form", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(_id),
+      body: JSON.stringify({ id: id }),
     });
     if (error.value) {
       throw createError({
@@ -32,6 +30,8 @@ export default () => {
           "Something went wrong with fetching data, try again later",
       });
     }
+
+    console.log(JSON.stringify(id));
   }
   async function getForm() {
     const { error, data } = await useFetch("/api/form", {
@@ -44,7 +44,7 @@ export default () => {
         message: error.value.message,
       });
     }
-    return data.value as { _id: ObjectId }[];
+    return data.value as { _id: string }[];
   }
   return { getForm, addForm, putForm };
 };
