@@ -15,18 +15,18 @@ export default () => {
       });
     }
   }
-  async function getForm(form: Object) {
-    const { error, data } = await useFetch("api/readDb", {
+  async function getForm() {
+    const { error, data } = await useFetch("/api/form", {
       method: "GET",
     });
     if (error.value) {
       throw createError({
         statusCode: 404,
-        statusMessage:
-          "Something went wrong with fetching data, try again later",
+        statusMessage: error.value.statusMessage,
+        message: error.value.message,
       });
     }
-    return data;
+    return data.value;
   }
   return { getForm, addForm };
 };
