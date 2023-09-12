@@ -24,8 +24,8 @@ const dataObject = ref({});
     <form>
       <text-input
         v-for="(value, key) in form"
-        :label="key.slice(1)"
-        :placeholder="key.slice(1)"
+        :label="$t(`flatPage.label.${key.slice(1)}`)"
+        :placeholder="$t(`flatPage.placeholder.${key.slice(1)}`)"
         :field-name="key"
         @passInputValue="createObject"
       />

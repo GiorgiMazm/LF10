@@ -1,5 +1,12 @@
 export default {
   de: {
-    name: "Markus",
+    flatPage: {
+      label: {
+        prevProfession: "Vorheriger Beruf",
+      },
+      placeholder: {
+        prevProfession: "Klempner",
+      },
+    },
   },
 };
