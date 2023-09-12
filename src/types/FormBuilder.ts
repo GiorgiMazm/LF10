@@ -154,7 +154,6 @@ export default class FormBuilder {
     this.form.transportCostMonth = transportCostMonth;
     return this;
   }
-<<<<<<< HEAD
   
   setSocialSecurity(
     healthSecurity: "lawFamily" | "lawStudent" | "private" | "lawVolunteer" | "other" | undefined,
@@ -196,8 +195,6 @@ export default class FormBuilder {
     this.form.secondPAddress = secondPAddress;
     return this;
   }
-=======
->>>>>>> b921198fddbe54348abbeadacee96699c06b8b41
 
   buildForm() {
     return this.form;
