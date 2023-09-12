@@ -7,10 +7,15 @@ interface propsInterface {
 const props = defineProps<propsInterface>();
 
 const name = ref("");
+function checkField() {
+  console.log(props.fieldName);
+  const blackList = ["applicant", "firstParent", "secondParent"];
+  return !blackList.some((item) => item === props.fieldName.slice(1));
+}
 </script>
 
 <template>
-  <div class="mt-3">
+  <div class="mt-3" v-if="checkField()">
     <label>{{ props.label }}</label>
     <input
       v-model="name"
@@ -21,7 +26,7 @@ const name = ref("");
           props.fieldName
         )
       "
-      class="ml-2 w-[10%] p-1 inline-block border border-gray-400 rounded"
+      class="ml-2 w-[30%] p-1 inline-block border border-gray-400 rounded"
       type="text"
       :placeholder="props.placeholder"
     />
