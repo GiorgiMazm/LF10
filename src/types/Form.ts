@@ -40,6 +40,126 @@ export default class Form {
   private _bankBIC: string | undefined;
   private _sex: "Male" | "Female" | "Diverse" | undefined;
   private _bankName: string | undefined;
+  private _healthSecurity:
+    | "lawFamily"
+    | "lawStudent"
+    | "private"
+    | "lawVolunteer"
+    | "other"
+    | undefined;
+  private _careSecurity: boolean | undefined;
+  private _taxNumber: string | undefined;
+  private _firstParent: Person | undefined;
+  private _firstSex: "Male" | "Female" | "Diverse" | undefined;
+  private _firstNation: string | undefined;
+  private _firstPAddress: string | undefined;
+
+  get healthSecurity():
+    | "lawFamily"
+    | "lawStudent"
+    | "private"
+    | "lawVolunteer"
+    | "other"
+    | undefined {
+    return this._healthSecurity;
+  }
+
+  set healthSecurity(
+    value:
+      | "lawFamily"
+      | "lawStudent"
+      | "private"
+      | "lawVolunteer"
+      | "other"
+      | undefined
+  ) {
+    this._healthSecurity = value;
+  }
+
+  get careSecurity(): boolean | undefined {
+    return this._careSecurity;
+  }
+
+  set careSecurity(value: boolean | undefined) {
+    this._careSecurity = value;
+  }
+
+  get taxNumber(): string | undefined {
+    return this._taxNumber;
+  }
+
+  set taxNumber(value: string | undefined) {
+    this._taxNumber = value;
+  }
+
+  get firstParent(): Person | undefined {
+    return this._firstParent;
+  }
+
+  set firstParent(value: Person | undefined) {
+    this._firstParent = value;
+  }
+
+  get firstSex(): "Male" | "Female" | "Diverse" | undefined {
+    return this._firstSex;
+  }
+
+  set firstSex(value: "Male" | "Female" | "Diverse" | undefined) {
+    this._firstSex = value;
+  }
+
+  get firstNation(): string | undefined {
+    return this._firstNation;
+  }
+
+  set firstNation(value: string | undefined) {
+    this._firstNation = value;
+  }
+
+  get firstPAddress(): string | undefined {
+    return this._firstPAddress;
+  }
+
+  set firstPAddress(value: string | undefined) {
+    this._firstPAddress = value;
+  }
+
+  get secondParent(): Person | undefined {
+    return this._secondParent;
+  }
+
+  set secondParent(value: Person | undefined) {
+    this._secondParent = value;
+  }
+
+  get secondPSex(): "Male" | "Female" | "Diverse" | undefined {
+    return this._secondPSex;
+  }
+
+  set secondPSex(value: "Male" | "Female" | "Diverse" | undefined) {
+    this._secondPSex = value;
+  }
+
+  get secondPNation(): string | undefined {
+    return this._secondPNation;
+  }
+
+  set secondPNation(value: string | undefined) {
+    this._secondPNation = value;
+  }
+
+  get secondPAddress(): string | undefined {
+    return this._secondPAddress;
+  }
+
+  set secondPAddress(value: string | undefined) {
+    this._secondPAddress = value;
+  }
+
+  private _secondParent: Person | undefined;
+  private _secondPSex: "Male" | "Female" | "Diverse" | undefined;
+  private _secondPNation: string | undefined;
+  private _secondPAddress: string | undefined;
 
   get bankName(): string | undefined {
     return this._bankName;

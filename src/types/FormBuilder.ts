@@ -154,10 +154,15 @@ export default class FormBuilder {
     this.form.transportCostMonth = transportCostMonth;
     return this;
   }
-<<<<<<< HEAD
-  
+
   setSocialSecurity(
-    healthSecurity: "lawFamily" | "lawStudent" | "private" | "lawVolunteer" | "other" | undefined,
+    healthSecurity:
+      | "lawFamily"
+      | "lawStudent"
+      | "private"
+      | "lawVolunteer"
+      | "other"
+      | undefined,
     careSecurity: boolean | undefined
   ) {
     this.form.healthSecurity = healthSecurity;
@@ -165,9 +170,7 @@ export default class FormBuilder {
     return this;
   }
 
-  setTax(
-    taxNumber: string | undefined
-  ) {
+  setTax(taxNumber: string | undefined) {
     this.form.taxNumber = taxNumber;
     return this;
   }
@@ -184,20 +187,26 @@ export default class FormBuilder {
     secondPBirth: string | undefined,
     secondPSex: "Male" | "Female" | "Diverse" | undefined,
     secondPNation: string | undefined,
-    secondPAddress: string | undefined,
+    secondPAddress: string | undefined
   ) {
-    this.form.firstParent = new Person(firstPLastName, firstPFirstName, firstPBirth);
+    this.form.firstParent = new Person(
+      firstPLastName,
+      firstPFirstName,
+      firstPBirth
+    );
     this.form.firstSex = firstPSex;
     this.form.firstNation = firstPNation;
     this.form.firstPAddress = firstPAddress;
-    this.form.secondParent = new Person(secondPLastName, secondPFirstName, secondPBirth);
+    this.form.secondParent = new Person(
+      secondPLastName,
+      secondPFirstName,
+      secondPBirth
+    );
     this.form.secondPSex = secondPSex;
     this.form.secondPNation = secondPNation;
     this.form.secondPAddress = secondPAddress;
     return this;
   }
-=======
->>>>>>> b921198fddbe54348abbeadacee96699c06b8b41
 
   buildForm() {
     return this.form;
