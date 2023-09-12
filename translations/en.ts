@@ -1,6 +1,23 @@
 export default {
   en: {
+    home: {
+      title: "Welcome to our page!",
+      select: "Select your form",
+    },
+    admin: {
+      title: "Administrator Page",
+      approve: "Approve",
+      decline: "Decline",
+      status: "Under consideration",
+    },
+    header: {
+      home: "Home",
+      admin: "Admin",
+    },
     flatPage: {
+      title: "Housing benefit application form",
+      submit: "Create",
+      cancel: "Back",
       label: {
         prevProfession: "Previous profession",
         lastName: "Family name",
@@ -66,6 +83,8 @@ export default {
         secondPNation: "Nationality of 2. parent",
         secondPAddress: "Address of 2. parent",
         applicant: "Applicant",
+        id: "Identification number",
+        isApproved: "Status of approval",
       },
       placeholder: {
         prevProfession: "Plumber",

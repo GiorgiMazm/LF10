@@ -1,6 +1,23 @@
 export default {
   de: {
+    home: {
+      title: "Willkommen auf unserer Seite!",
+      select: "Wählen Sie Ihr Formular aus",
+    },
+    admin: {
+      title: "Administratorseite",
+      approve: "Genehmigen",
+      decline: "Ablehnen",
+      status: "Unter Berücksichtigung",
+    },
+    header: {
+      home: "Hauptseite",
+      admin: "Admin bereich",
+    },
     flatPage: {
+      title: "Wohngeldantrag Formular",
+      submit: "Erstellen",
+      cancel: "Zurück",
       label: {
         prevProfession: "Vorheriger Beruf",
         lastName: "Familienname",
@@ -66,6 +83,8 @@ export default {
         secondPNation: "Nationalität des 2. Elternteils",
         secondPAddress: "Addresse des 2. Elternteils",
         applicant: "Antragsteller",
+        id: "Identifikationsnummer",
+        isApproved: "Genehmigungsstatus",
       },
       placeholder: {
         prevProfession: "Musterberuf",
