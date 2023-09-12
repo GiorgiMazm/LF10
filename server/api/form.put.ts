@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   await forms.updateOne(
     { _id: new ObjectId(body.id) },
-    { $set: { isApproved: true } }
+    { $set: { _isApproved: true } }
   );
   return "success";
 });

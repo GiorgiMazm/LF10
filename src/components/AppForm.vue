@@ -3,12 +3,15 @@ import FormDirector from "~/types/FormDirector";
 import Form from "~/types/Form";
 const { addForm } = useForm();
 
+const router = useRouter();
+
 const director = new FormDirector("", "", "", "", "", 0, "", "", "");
 const form = director.builder.buildForm();
 async function createForm() {
   //@ts-ignore
-  dataObject.value.isApproved = null;
+  dataObject.value._isApproved = null;
   await addForm(dataObject.value);
+  await router.push("/");
 }
 
 function createObject(data: object) {
