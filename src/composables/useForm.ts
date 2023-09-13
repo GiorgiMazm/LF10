@@ -30,8 +30,6 @@ export default () => {
           "Something went wrong with fetching data, try again later",
       });
     }
-
-    console.log(JSON.stringify(id));
   }
   async function getForm() {
     const { error, data } = await useFetch("/api/form", {

@@ -94,7 +94,7 @@ export default {
         houseNumber: "123",
         plz: "12345",
         city: "Mustercity",
-        eMail: "max.musterman@",
+        eMail: "max.musterman{'@'}gmail.com",
         telephone: "1234567890",
         sex: "diverse",
         nationality: "German",
