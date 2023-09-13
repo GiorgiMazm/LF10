@@ -82,7 +82,6 @@ export default {
         secondPSex: "Sex of 2. parent",
         secondPNation: "Nationality of 2. parent",
         secondPAddress: "Address of 2. parent",
-        applicant: "Applicant",
         id: "Identification number",
         isApproved: "Status of approval",
       },

@@ -82,7 +82,6 @@ export default {
         secondPSex: "Geschlecht des 2. Elternteils",
         secondPNation: "Nationalität des 2. Elternteils",
         secondPAddress: "Addresse des 2. Elternteils",
-        applicant: "Antragsteller",
         id: "Identifikationsnummer",
         isApproved: "Genehmigungsstatus",
       },
