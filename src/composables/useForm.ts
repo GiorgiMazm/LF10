@@ -15,13 +15,13 @@ export default () => {
       });
     }
   }
-  async function putForm(id: string) {
+  async function putForm(id: string, status: boolean) {
     const { error } = await useFetch("api/form", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: id }),
+      body: JSON.stringify({ id: id, isApproved: status }),
     });
     if (error.value) {
       throw createError({

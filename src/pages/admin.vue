@@ -1,13 +1,10 @@
 <script setup lang="ts">
 const { getForm, putForm } = useForm();
-const formArray: { _id: string }[] = await getForm();
-const approve = (id: string) => {
-  putForm(id);
+const formArray = ref(await getForm());
+const setStatus = async (id: string, status: boolean) => {
+  await putForm(id, status);
+  formArray.value = await getForm();
 };
-
-function decline(id: string) {
-  console.log(id);
-}
 </script>
 
 <template>
@@ -24,14 +21,14 @@ function decline(id: string) {
             <div class="flex justify-around">
               <button
                 class="bg-lime-400 px-5 py-2 rounded-2xl mt-4 hover:bg-lime-600"
-                @click="approve(form._id)"
+                @click="setStatus(form._id, true)"
               >
                 {{ $t("admin.approve") }}
               </button>
 
               <button
                 class="bg-red-600 px-5 py-2 rounded-2xl mt-4 hover:bg-red-800"
-                @click="decline(form._id)"
+                @click="setStatus(form._id, false)"
               >
                 {{ $t("admin.decline") }}
               </button>
