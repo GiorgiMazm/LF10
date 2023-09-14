@@ -32,11 +32,19 @@ const dataObject = ref({});
         :field-name="key"
         @passInputValue="createObject"
       />
-      <button class="my-2" @click.prevent="createForm">
-        {{ $t("flatPage.submit") }}
-      </button>
-      <br />
-      <NuxtLink href="/">{{ $t("flatPage.cancel") }}</NuxtLink>
+      <div class="mt-3">
+        <button
+          class="my-2 mr-4 px-6 py-3 rounded bg-lime-400"
+          @click.prevent="createForm"
+        >
+          {{ $t("flatPage.submit") }}
+        </button>
+        <NuxtLink
+          class="my-2 mr-4 px-7 py-3 rounded bg-amber-400 inline-block"
+          href="/"
+          >{{ $t("flatPage.cancel") }}</NuxtLink
+        >
+      </div>
     </form>
   </div>
 </template>
