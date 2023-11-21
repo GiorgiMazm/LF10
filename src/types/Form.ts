@@ -1,5 +1,7 @@
 import Person from "~/types/Person";
 
+import { sex } from "~/types/sex";
+
 export default class Form {
   private _prevProfession: boolean | undefined;
   private _eduType:
@@ -38,7 +40,7 @@ export default class Form {
   private _bankAddress: string | undefined;
   private _bankIBAN: string | undefined;
   private _bankBIC: string | undefined;
-  private _sex: "Male" | "Female" | "Diverse" | undefined;
+  private _sex: sex;
   private _bankName: string | undefined;
   private _healthSecurity:
     | "lawFamily"
@@ -50,12 +52,12 @@ export default class Form {
   private _careSecurity: boolean | undefined;
   private _taxNumber: string | undefined;
   private _firstParent: Person | undefined;
-  private _firstSex: "Male" | "Female" | "Diverse" | undefined;
+  private _firstSex: sex;
   private _firstNation: string | undefined;
   private _firstPAddress: string | undefined;
   private _applicant: Person;
   private _secondParent: Person | undefined;
-  private _secondPSex: "Male" | "Female" | "Diverse" | undefined;
+  private _secondPSex: sex;
   private _secondPNation: string | undefined;
   private _secondPAddress: string | undefined;
 
@@ -65,7 +67,7 @@ export default class Form {
     private _birth: string,
     private _street: string,
     private _houseNumber: string,
-    private _plz: Number,
+    private _plz: number,
     private _city: string,
     private _eMail: string,
     private _telephone: string
@@ -102,7 +104,7 @@ export default class Form {
     this._firstParent = value;
   }
 
-  set firstSex(value: "Male" | "Female" | "Diverse" | undefined) {
+  set firstSex(value: sex) {
     this._firstSex = value;
   }
 

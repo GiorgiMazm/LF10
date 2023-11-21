@@ -1,6 +1,8 @@
 import Form from "~/types/Form";
 import Person from "~/types/Person";
 
+type sex = "Male" | "Female" | "Diverse" | undefined;
+
 export default class FormBuilder {
   private form: Form;
   constructor(
@@ -9,7 +11,7 @@ export default class FormBuilder {
     private birth: string,
     private street: string,
     private houseNumber: string,
-    private plz: Number,
+    private plz: number,
     private city: string,
     private eMail: string,
     private telephone: string
@@ -27,7 +29,7 @@ export default class FormBuilder {
     );
   }
 
-  setSex(sex: "Male" | "Female" | "Diverse" | undefined) {
+  setSex(sex: sex) {
     this.form.sex = sex;
     return this;
   }
@@ -154,7 +156,7 @@ export default class FormBuilder {
     this.form.transportCostMonth = transportCostMonth;
     return this;
   }
-  
+
   setSocialSecurity(
     healthSecurity:
       | "lawFamily"

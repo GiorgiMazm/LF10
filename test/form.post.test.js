@@ -28,7 +28,6 @@ describe("form.post", () => {
     });
     await _default(event);
     const insertedForm = await forms.findOne({ _id: "Wohngeld" });
-    //@ts-ignore
     expect(insertedForm).toEqual(mockForm);
   });
 });

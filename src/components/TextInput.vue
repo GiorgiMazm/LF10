@@ -1,10 +1,10 @@
 <script setup lang="ts">
-interface propsInterface {
+interface IpropsInterface {
   label: string;
   placeholder: string;
   fieldName: string;
 }
-const props = defineProps<propsInterface>();
+const props = defineProps<IpropsInterface>();
 
 const name = ref("");
 function checkField() {
