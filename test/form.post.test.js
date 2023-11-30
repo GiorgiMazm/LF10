@@ -1,17 +1,19 @@
 const { MongoClient } = require("mongodb");
-const { _default } = require("../server/api/form.post");
-import * as connectDbUtil from "~~/server/plugins/connectDb";
+import { describe, test, expect, vi, beforeAll, afterAll } from "vitest";
+
+import { postRequest } from "../server/api/requests/post.ts";
+import * as connectDbUtil from "../server/plugins/connector.ts/connectorDB.js";
 
 describe("form.post", () => {
-  const connectDBMock = jest.spyOn(connectDbUtil, "default");
+  const connectDBMock = vi.spyOn(connectDbUtil, "connector");
   let connection;
   let db;
   beforeAll(async () => {
-    connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
+    const connection = await MongoClient.connect(globalThis.__MONGO_URI__, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    db = await connection(globalThis.__MONGO_DB_NAME__);
+    db = connection.db(globalThis.__MONGO_DB_NAME__);
   });
   afterAll(async () => {
     await connection?.close();
@@ -21,12 +23,17 @@ describe("form.post", () => {
     connectDBMock.mockResolvedValueOnce(connection);
     const forms = db.collection("forms");
     const mockForm = { _id: "Wohngeld", name: "John" };
-    const event = new CustomEvent("event", {
-      detail: {
-        name: "john",
+    const event = new Event({
+      body: {
+        _id: "Wohngeld",
+        name: "John",
       },
     });
-    await _default(event);
+    // forms.insertOne({
+    //   _id: "Wohngeld",
+    //   name: "John",
+    // });
+    await postRequest(event);
     const insertedForm = await forms.findOne({ _id: "Wohngeld" });
     expect(insertedForm).toEqual(mockForm);
   });

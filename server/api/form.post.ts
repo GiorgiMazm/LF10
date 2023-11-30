@@ -1,11 +1,5 @@
-import connectDb from "../plugins/connectDb";
+import { postRequest } from "./requests/post";
 
 export default defineEventHandler(async (event) => {
-  const dbConnection = await connectDb();
-
-  if (!dbConnection) return;
-  const forms = dbConnection.collection("forms");
-  const body = await readBody(event);
-  await forms.insertOne(body);
-  return "success";
+  return await postRequest(event);
 });
