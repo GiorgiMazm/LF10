@@ -1,4 +1,4 @@
-import { connector } from "~~/server/plugins/connector.ts/connectorDB";
+import { connector } from "../../plugins/connector.ts/connectorDB";
 
 export const postRequest = async (event: any) => {
   console.log(event);
@@ -6,7 +6,7 @@ export const postRequest = async (event: any) => {
 
   if (!dbConnection) return;
   const forms = dbConnection.collection("forms");
-  const body = await readBody(event);
+  const body = JSON.parse(event.body);
   await forms.insertOne(body);
   return "success";
 };

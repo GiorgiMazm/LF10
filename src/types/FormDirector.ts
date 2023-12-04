@@ -42,29 +42,10 @@ export default class FormDirector {
       .setNation(wohngeldParams.nation)
       .setSex(wohngeldParams.sex)
       .setSocialSupport(wohngeldParams.socSup)
-      .setAddPers(
-        wohngeldParams.addPersonLastName,
-        wohngeldParams.addPersonFirstName,
-        wohngeldParams.addPersonBirthday
-      )
+      .setAddPers()
       .setHouse(wohngeldParams.houseSize, wohngeldParams.houseType)
       .setRent(wohngeldParams.rent);
-    this._builder
-      .setWork(
-        wohngeldParams.workName,
-        wohngeldParams.workStreet,
-        wohngeldParams.workNumber,
-        wohngeldParams.workPlz,
-        wohngeldParams.workCity
-      )
-      .setIncome(wohngeldParams.nettoIncome)
-      .setBank(
-        wohngeldParams.bankUserName,
-        wohngeldParams.bankAddress,
-        wohngeldParams.IBAN,
-        wohngeldParams.BIC,
-        wohngeldParams.bankName
-      );
+    this._builder.setWork().setIncome(wohngeldParams.nettoIncome).setBank();
     this.buildBABAntrag(wohngeldParams.bab);
   }
 
@@ -72,67 +53,21 @@ export default class FormDirector {
     this._builder
       .setNation(babParams.nation)
       .setProfession(babParams.prevProfession)
-      .setEducation(
-        babParams.eduType,
-        babParams.eduStart,
-        babParams.eduEnd,
-        babParams.eduProfession
-      )
-      .setJobEducation(
-        babParams.jobTitle,
-        babParams.jobBegin,
-        babParams.jobEnd,
-        babParams.jobEduInstitution
-      )
-      .setTravelCosts(
-        babParams.pendel,
-        babParams.daysAWeek,
-        babParams.transport,
-        babParams.start,
-        babParams.end,
-        babParams.transportCostMonth
-      );
+      .setEducation()
+      .setJobEducation()
+      .setTravelCosts();
     this.buildBafog(babParams.bafog);
   }
 
   buildBafog(bafogParams: Bafog) {
     this._builder
-      .setJobEducation(
-        bafogParams.jobTitle,
-        bafogParams.jobBegin,
-        bafogParams.jobEnd,
-        bafogParams.jobEduInstitution
-      )
+      .setJobEducation()
       .setNation(bafogParams.nation)
-      .setBank(
-        bafogParams.bankUserName,
-        bafogParams.bankAddress,
-        bafogParams.IBAN,
-        bafogParams.BIC,
-        bafogParams.bankName
-      )
-      .setSocialSecurity(bafogParams.healthSecurity, bafogParams.careSecurity)
+      .setBank()
+      .setSocialSecurity()
       .setTax(bafogParams.taxNumber)
-      .setParents(
-        bafogParams.firstPLastName,
-        bafogParams.firstPFirstName,
-        bafogParams.firstPBirth,
-        bafogParams.firstPSex,
-        bafogParams.firstPNation,
-        bafogParams.firstPAddress,
-        bafogParams.secondPLastName,
-        bafogParams.secondPFirstName,
-        bafogParams.secondPBirth,
-        bafogParams.secondPSex,
-        bafogParams.secondPNation,
-        bafogParams.secondPAddress
-      )
+      .setParents()
       .setIncome(bafogParams.nettoIncome)
-      .setEducation(
-        bafogParams.eduType,
-        bafogParams.eduStart,
-        bafogParams.eduEnd,
-        bafogParams.eduProfession
-      );
+      .setEducation();
   }
 }

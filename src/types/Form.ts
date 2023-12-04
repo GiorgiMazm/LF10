@@ -1,6 +1,5 @@
 import Person from "~/types/Person";
-
-import { sex } from "~/types/sex";
+import { Sex } from "./interfaces/Sex";
 
 export default class Form {
   private _prevProfession: boolean | undefined;
@@ -40,7 +39,7 @@ export default class Form {
   private _bankAddress: string | undefined;
   private _bankIBAN: string | undefined;
   private _bankBIC: string | undefined;
-  private _sex: sex;
+  private _sex: Sex;
   private _bankName: string | undefined;
   private _healthSecurity:
     | "lawFamily"
@@ -52,12 +51,12 @@ export default class Form {
   private _careSecurity: boolean | undefined;
   private _taxNumber: string | undefined;
   private _firstParent: Person | undefined;
-  private _firstSex: sex;
+  private _firstSex: Sex;
   private _firstNation: string | undefined;
   private _firstPAddress: string | undefined;
   private _applicant: Person;
   private _secondParent: Person | undefined;
-  private _secondPSex: sex;
+  private _secondPSex: Sex;
   private _secondPNation: string | undefined;
   private _secondPAddress: string | undefined;
 
@@ -104,7 +103,7 @@ export default class Form {
     this._firstParent = value;
   }
 
-  set firstSex(value: sex) {
+  set firstSex(value: Sex) {
     this._firstSex = value;
   }
 

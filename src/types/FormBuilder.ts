@@ -1,10 +1,20 @@
 import Form from "~/types/Form";
 import Person from "~/types/Person";
-
-type sex = "Male" | "Female" | "Diverse" | undefined;
+import { Sex } from "./interfaces/Sex";
+import {
+  WorkParams,
+  AdditionalPersonParams,
+  BankParams,
+  EducationParams,
+  JobEducationParams,
+  TravelCostsParams,
+  SocialSecurityParams,
+  ParentsParams,
+} from "./interfaces/FormbuilderInterFace";
 
 export default class FormBuilder {
   private form: Form;
+
   constructor(
     private lastName: string,
     private firstName: string,
@@ -29,33 +39,23 @@ export default class FormBuilder {
     );
   }
 
-  setSex(sex: sex) {
+  setSex(sex: Sex) {
     this.form.sex = sex;
     return this;
   }
 
-  setNation(nationality: string | undefined) {
+  setNation(nationality?: string) {
     this.form.nationality = nationality;
     return this;
   }
 
-  setSocialSupport(socSup: boolean | undefined) {
+  setSocialSupport(socSup?: boolean) {
     this.form.socSup = socSup;
     return this;
   }
 
-  setWork(
-    workName: string | undefined,
-    workStreet: string | undefined,
-    workNumber: string | undefined,
-    workPlz: number | undefined,
-    workCity: string | undefined
-  ) {
-    this.form.workName = workName;
-    this.form.workStreet = workStreet;
-    this.form.workNumber = workNumber;
-    this.form.workPlz = workPlz;
-    this.form.workCity = workCity;
+  setWork(workParams: WorkParams = {}) {
+    Object.assign(this.form, workParams);
     return this;
   }
 
@@ -64,149 +64,85 @@ export default class FormBuilder {
     return this;
   }
 
-  setIncome(income: number | undefined) {
+  setIncome(income?: number) {
     this.form.income = income;
     return this;
   }
 
-  setAddPers(
-    lastName: string | undefined,
-    firstName: string | undefined,
-    birth: string | undefined
-  ) {
-    this.form.addedPerson = new Person(lastName, firstName, birth);
+  setAddPers(additionalPersonParams: AdditionalPersonParams = {}) {
+    this.form.addedPerson = new Person(
+      additionalPersonParams.lastName,
+      additionalPersonParams.firstName,
+      additionalPersonParams.birth
+    );
     return this;
   }
 
-  setHouse(houseSize: number | undefined, houseType: string | undefined) {
+  setHouse(houseSize?: number, houseType?: string) {
     this.form.houseSize = houseSize;
     this.form.houseType = houseType;
     return this;
   }
 
-  setRent(rent: number | undefined) {
+  setRent(rent?: number) {
     this.form.rent = rent;
-    return rent;
-  }
-
-  setBank(
-    bankUserName: string | undefined,
-    address: string | undefined,
-    IBAN: string | undefined,
-    BIC: string | undefined,
-    bankName: string | undefined
-  ) {
-    this.form.bankUserName = bankUserName;
-    this.form.bankAddress = address;
-    this.form.bankIBAN = IBAN;
-    this.form.bankBIC = BIC;
-    this.form.bankName = bankName;
     return this;
   }
 
-  setProfession(prevProfession: boolean | undefined) {
+  setBank(bankParams: BankParams = {}) {
+    Object.assign(this.form, bankParams);
+    return this;
+  }
+
+  setProfession(prevProfession?: boolean) {
     this.form.prevProfession = prevProfession;
     return this;
   }
 
-  setEducation(
-    eduType:
-      | "middle school"
-      | "high school"
-      | "university"
-      | "apprenticeship"
-      | undefined,
-    eduStart: Date | undefined,
-    eduEnd: Date | undefined,
-    eduProfession: string | undefined
-  ) {
-    this.form.eduType = eduType;
-    this.form.eduStart = eduStart;
-    this.form.eduEnd = eduEnd;
-    this.form.eduProfession = eduProfession;
+  setEducation(educationParams: EducationParams = {}) {
+    Object.assign(this.form, educationParams);
     return this;
   }
 
-  setJobEducation(
-    jobTitle: string | undefined,
-    jobBegin: Date | undefined,
-    jobEnd: Date | undefined,
-    jobEduInstitution: string | undefined
-  ) {
-    this.form.jobTitle = jobTitle;
-    this.form.jobBegin = jobBegin;
-    this.form.jobEnd = jobEnd;
-    this.form.jobEduInstitution = jobEduInstitution;
+  setJobEducation(jobEducationParams: JobEducationParams = {}) {
+    Object.assign(this.form, jobEducationParams);
     return this;
   }
 
-  setTravelCosts(
-    pendel: boolean | undefined,
-    daysAWeek: number | undefined,
-    transport: "Public Transport" | "KFZ" | "other" | undefined,
-    start: string | undefined,
-    end: string | undefined,
-    transportCostMonth: number | undefined
-  ) {
-    this.form.pendel = pendel;
-    this.form.daysAWeek = daysAWeek;
-    this.form.transport = transport;
-    this.form.start = start;
-    this.form.end = end;
-    this.form.transportCostMonth = transportCostMonth;
+  setTravelCosts(travelCostsParams: TravelCostsParams = {}) {
+    Object.assign(this.form, travelCostsParams);
     return this;
   }
 
-  setSocialSecurity(
-    healthSecurity:
-      | "lawFamily"
-      | "lawStudent"
-      | "private"
-      | "lawVolunteer"
-      | "other"
-      | undefined,
-    careSecurity: boolean | undefined
-  ) {
-    this.form.healthSecurity = healthSecurity;
-    this.form.careSecurity = careSecurity;
+  setSocialSecurity(socialSecurityParams: SocialSecurityParams = {}) {
+    Object.assign(this.form, socialSecurityParams);
     return this;
   }
 
-  setTax(taxNumber: string | undefined) {
+  setTax(taxNumber?: string) {
     this.form.taxNumber = taxNumber;
     return this;
   }
 
-  setParents(
-    firstPLastName: string | undefined,
-    firstPFirstName: string | undefined,
-    firstPBirth: string | undefined,
-    firstPSex: "Male" | "Female" | "Diverse" | undefined,
-    firstPNation: string | undefined,
-    firstPAddress: string | undefined,
-    secondPLastName: string | undefined,
-    secondPFirstName: string | undefined,
-    secondPBirth: string | undefined,
-    secondPSex: "Male" | "Female" | "Diverse" | undefined,
-    secondPNation: string | undefined,
-    secondPAddress: string | undefined
-  ) {
+  setParents(parentsParams: ParentsParams = {}) {
     this.form.firstParent = new Person(
-      firstPLastName,
-      firstPFirstName,
-      firstPBirth
+      parentsParams.firstParent?.lastName,
+      parentsParams.firstParent?.firstName,
+      parentsParams.firstParent?.birth
     );
-    this.form.firstSex = firstPSex;
-    this.form.firstNation = firstPNation;
-    this.form.firstPAddress = firstPAddress;
+    this.form.firstSex = parentsParams.firstPSex;
+    this.form.firstNation = parentsParams.firstPNation;
+    this.form.firstPAddress = parentsParams.firstPAddress;
+
     this.form.secondParent = new Person(
-      secondPLastName,
-      secondPFirstName,
-      secondPBirth
+      parentsParams.secondParent?.lastName,
+      parentsParams.secondParent?.firstName,
+      parentsParams.secondParent?.birth
     );
-    this.form.secondPSex = secondPSex;
-    this.form.secondPNation = secondPNation;
-    this.form.secondPAddress = secondPAddress;
+    this.form.secondPSex = parentsParams.secondPSex;
+    this.form.secondPNation = parentsParams.secondPNation;
+    this.form.secondPAddress = parentsParams.secondPAddress;
+
     return this;
   }
 

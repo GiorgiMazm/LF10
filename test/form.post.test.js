@@ -2,7 +2,7 @@ const { MongoClient } = require("mongodb");
 import { describe, test, expect, vi, beforeAll, afterAll } from "vitest";
 
 import { postRequest } from "../server/api/requests/post.ts";
-import * as connectDbUtil from "../server/plugins/connector.ts/connectorDB.js";
+import * as connectDbUtil from "../server/plugins/connector.ts/connectorDB";
 
 describe("form.post", () => {
   const connectDBMock = vi.spyOn(connectDbUtil, "connector");
@@ -25,16 +25,13 @@ describe("form.post", () => {
     const mockForm = { _id: "Wohngeld", name: "John" };
     const event = new Event({
       body: {
-        _id: "Wohngeld",
-        name: "John",
+        mockForm,
       },
     });
-    // forms.insertOne({
-    //   _id: "Wohngeld",
-    //   name: "John",
-    // });
+    forms.insertOne(mockForm);
     await postRequest(event);
-    const insertedForm = await forms.findOne({ _id: "Wohngeld" });
+    console.log(forms);
+    const insertedForm = await forms.findOne({ _id: "Wohngeld", name: "John" });
     expect(insertedForm).toEqual(mockForm);
   });
 });
