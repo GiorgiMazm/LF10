@@ -1,4 +1,4 @@
-import { connector } from "../../plugins/connector.ts/connectorDB";
+import { connector } from "../../plugins/connector/connectorDB";
 
 export const postRequest = async (event: any) => {
   console.log(event);

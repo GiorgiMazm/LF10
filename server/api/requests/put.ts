@@ -1,8 +1,8 @@
-import connectDb from "~~/server/plugins/connectDb";
+import { connector } from "../../plugins/connector/connectorDB";
 import { ObjectId } from "bson";
 
 export const putRequest = async (event: any) => {
-  const dbConnection = await connectDb();
+  const dbConnection = await connector();
 
   if (!dbConnection) return;
   const forms = dbConnection.collection("forms");

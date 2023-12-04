@@ -1,4 +1,4 @@
-import { connector } from "../plugins/connector.ts/connectorDB";
+import { connector } from "./connector/connectorDB";
 
 export default async () => {
   return await connector();
