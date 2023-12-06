@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb");
 import { describe, test, expect, vi, beforeAll, afterAll } from "vitest";
 
-import { postRequest } from "../server/api/requests/post.ts";
+import { putRequest } from "../server/api/requests/put.ts";
 import * as connectDbUtil from "../server/plugins/connector/connectorDB";
 
 describe("form.post", () => {
@@ -23,16 +23,22 @@ describe("form.post", () => {
   test("should insert form into collection", async () => {
     connectDBMock.mockResolvedValueOnce(connection);
     const forms = db.collection("forms");
-    const mockForm = { _id: "Wohngeld", name: "John" };
+    const mockForm = { _id: "Wohngeld", name: "John", _isApproved: null };
+    const expectedForm = { _id: "Wohngeld", name: "John", _isApproved: true };
     const event = new Event({
       body: {
         mockForm,
       },
     });
     forms.insertOne(mockForm);
-    await postRequest(event);
+    await forms.updateOne({ _id: "Wohngeld" }, { $set: { _isApproved: true } });
+    await putRequest(event);
     console.log(forms);
-    const insertedForm = await forms.findOne({ _id: "Wohngeld", name: "John" });
-    expect(insertedForm).toEqual(mockForm);
+    const insertedForm = await forms.findOne({
+      _id: "Wohngeld",
+      name: "John",
+      _isApproved: true,
+    });
+    expect(insertedForm).toEqual(expectedForm);
   });
 });
